@@ -88,19 +88,19 @@
                             <ul class="list-unstyled inner-level-menu">
                                 <li>
                                     <a href="banner.php">
-                                        <i class="simple-icon-credit-card"></i> <span
-                                            class="d-inline-block">Banner Section</span>
+                                        <i class="simple-icon-grid"></i> 
+                                        Banner Section
                                     </a>
                                 </li>
                                 <li>
                                     <a href="home_about.php">
-                                        <i class="simple-icon-list"></i>
-                                         <span class="d-inline-block">About Section</span>
+                                        <i class="simple-icon-grid"></i>
+                                         About Section
                                     </a>
                                 </li>
                                 <li>
                                     <a href="ourproject.php">
-                                    <i class="iconsminds-box"></i> Our Project
+                                    <i class="simple-icon-grid"></i> Our Project
                                     </a>
                                 </li>
                                 <li>
@@ -108,16 +108,26 @@
                                     <i class="simple-icon-grid"></i> Project Stage
                                     </a>
                                 </li>
-                                <!-- <li>
-                                    <a href="blog.php">
-                                        <i class="simple-icon-grid"></i> <span class="d-inline-block">Blog Section</span>
+                                 <li>
+                                    <a href="video.php">
+                                        <i class="simple-icon-grid"></i> <span class="d-inline-block">Video Section</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="free_trainning_list.php">
-                                        <i class="simple-icon-list"></i> <span class="d-inline-block">Free Trainning</span>
+                                    <a href="ourteam.php">
+                                        <i class="simple-icon-grid"></i> <span class="d-inline-block">Our Team</span>
                                     </a>
-                                </li> -->
+                                </li>
+                               <li>
+                                    <a href="countsection.php">
+                                        <i class="simple-icon-grid"></i> <span class="d-inline-block">Count Section</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="testimonials.php">
+                                        <i class="simple-icon-grid"></i> <span class="d-inline-block">Testimonial</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

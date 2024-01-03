@@ -19,8 +19,14 @@ define('SITE_PATH','http://localhost/rotamach/');
 define('CMS_IMAGE_SERVER_PATH',SERVER_PATH.'media/cms/');
 define('CMS_IMAGE_SITE_PATH',SITE_PATH.'media/cms/');
 
+define('TEAM_IMAGE_SERVER_PATH',SERVER_PATH.'media/ourteam/');
+define('TEAM_IMAGE_SITE_PATH',SITE_PATH.'media/ourteam/');
+
 define('PROJECT_IMAGE_SERVER_PATH',SERVER_PATH.'media/project/');
 define('PROJECT_IMAGE_SITE_PATH',SITE_PATH.'media/project/');
+
+define('VIDEO_IMAGE_SERVER_PATH',SERVER_PATH.'media/video/');
+define('VIDEO_IMAGE_SITE_PATH',SITE_PATH.'media/video/');
 
 define('APPLICATION_IMAGE_SERVER_PATH',SERVER_PATH.'media/application/');
 define('APPLICATION_IMAGE_SITE_PATH',SITE_PATH.'media/application/');
