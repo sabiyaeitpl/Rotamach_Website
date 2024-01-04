@@ -1,3 +1,39 @@
+   <?php 
+       $res=mysqli_query($con,"select * from admin_users where id='1'");
+       $row = mysqli_fetch_assoc($res);
+
+
+     
+        if (isset($_POST['emailsubmit'])) {
+            $email = $con->real_escape_string($_POST['email']);
+            $checkEmailQuery = "SELECT COUNT(*) AS emailCount FROM emailtable WHERE email = '$email'";
+            $result = $con->query($checkEmailQuery);
+
+            if ($result === FALSE) {
+                echo '<script>alert("Error: ' . $con->error . '"); window.location.href = "index.php";</script>';
+                exit();
+            }
+
+            $row = $result->fetch_assoc();
+            $emailCount = $row['emailCount'];
+
+            if ($emailCount > 0) {
+                echo '<script>alert("Email already exists!"); window.location.href = "index.php";</script>';
+                exit();
+            }
+            $insertEmailQuery = "INSERT INTO emailtable (email) VALUES ('$email')";
+            
+            if ($con->query($insertEmailQuery) === TRUE) {
+                echo '<script>alert("Email inserted successfully!"); window.location.href = "index.php";</script>';
+                exit();
+            } else {
+                echo '<script>alert("Error: ' . $con->error . '"); window.location.href = "index.php";</script>';
+                exit();
+            }
+        }
+
+   ?>
+   
    <!-- Footer Start -->
    <div class="bg-dark text-white footer_bar" data-aos="fade-up">
         <div class="container">
@@ -6,60 +42,50 @@
                     <div class="mb-2">
                         <img class="img-fluid" src="img/footer_logo.png" alt="" />
                     </div>
-                    <p>Letraset sheets containing
-                        Lorem Ipsum passages, and
-                        more recently with desktop publishing</p>
+                    <p><?php echo $row['message'] ?></p>
                     <div class="d-flex justify-content-start mt-4 footer_social">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-                            style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
+                            style="width: 38px; height: 38px;" href="<?php echo $row['twitter_link'] ?>" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-                            style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            style="width: 38px; height: 38px;" href="<?php echo $row['facebook_link'] ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-                            style="width: 38px; height: 38px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            style="width: 38px; height: 38px;" href="<?php echo $row['google_link'] ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-                            style="width: 38px; height: 38px;" href="#"><i class="fab fa-instagram"></i></a>
+                            style="width: 38px; height: 38px;" href="<?php echo $row['instagram_link'] ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 38px; height: 38px;" href="<?php echo $row['youtube_link'] ?>" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-5">
                     <h4 class="text-primary mb-4">Links</h4>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-3"></i>Home</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-3"></i>About Us</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-3"></i>Services</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-3"></i>Portfolio</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-3"></i>Career</a>
-                        <a class="text-white" href="#"><i class="fa fa-angle-right mr-3"></i>Contact Us</a>
+                        <a class="text-white mb-2" href="/"><i class="fa fa-angle-right mr-3"></i>Home</a>
+                        <a class="text-white mb-2" href="about_us.php"><i class="fa fa-angle-right mr-3"></i>About Us</a>
+                        <a class="text-white mb-2" href="products.php"><i class="fa fa-angle-right mr-3"></i>Product</a>
+                        <a class="text-white" href="contact_us.php"><i class="fa fa-angle-right mr-3"></i>Contact Us</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
                     <h4 class="text-primary mb-4">Connect Us</h4>
                     <div class="d-flex flex-column justify-content-start">
-                        <p><a href="mailto:sumana.uk@rotamech.com">sumana.uk@rotamech.com</a></p>
+                        <p><a href="mailto:<?php echo $row['comp_email'] ?>"><?php echo $row['comp_email'] ?></a></p>
                         <p>
-                            Rotamech (UK) Limited
+                          <?php echo $row['address'] ?>
                             <br />
-                            1 GREAT BREAK WELWYN GARDEN CITY AL7
-                            <br />
-                            3EZ, United Kingdom
-                            <br />
-                            Phone: +44 7910965663
+                            <?php echo $row['phone'] ?>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="bg-danger newsletter_col text-center">
                         <h4 class="text-white mb-4 bold">JOIN US</h4>
-                        <form action="">
+                        <form action="" method="post">
                             <div class="form-group">
-                                <!-- <input type="text" class="form-control border-0" placeholder="Your Name"
-                                                    required="required" /> -->
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0" placeholder="Your Email"
+                                <input type="email" name="email" class="form-control border-0" placeholder="Your Email"
                                     required="required" />
                             </div>
                             <div>
-                                <button class="btn btn-lg btn-dark btn-block" type="submit">Submit</button>
+                                <button class="btn btn-lg btn-dark btn-block" type="submit" name="emailsubmit">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -67,7 +93,7 @@
             </div>
         </div>
         <div class="container border-top border-secondary pt-2 text-center">
-            <p class="m-0 text-center text-white">copyright 2023 rotamech.com. All Rights Reserved</p>
+            <p class="m-0 text-center text-white">copyright <?php echo date('Y') ?> <?php echo $row['full_name']; ?>. All Rights Reserved</p>
             <a href="#" class="m-2">Privacy Policy</a>
             <a href="#" class="m-2">My Privacy Rights</a>
             <a href="#" class="m-2">Terms of Us</a>

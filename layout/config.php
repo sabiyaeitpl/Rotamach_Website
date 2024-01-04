@@ -6,6 +6,9 @@
 define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/rotamach/');
 define('SITE_PATH','http://localhost/rotamach/');
 
+define('CAREER_IMAGE_SERVER_PATH',SERVER_PATH.'media/career/');
+define('CAREER_IMAGE_SITE_PATH',SITE_PATH.'media/carrer/');
+
 define('PROJECT_IMAGE_SERVER_PATH',SERVER_PATH.'media/project/');
 define('PROJECT_IMAGE_SITE_PATH',SITE_PATH.'media/project/');
 

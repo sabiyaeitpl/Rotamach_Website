@@ -7,6 +7,7 @@
    $breadcumb_title = 'Add '.$section_title;
    $id=$_GET['id'];
    $email='';
+   $comp_email='';
    $password='';
    $full_name='';
    $phone='';
@@ -28,6 +29,7 @@
        if($check>0){
            $row=mysqli_fetch_assoc($res);
            $email=$row['email'];
+           $comp_email=$row['comp_email'];
            $password=$row['password'];
            $full_name=$row['full_name'];
            $phone=$row['phone'];
@@ -54,6 +56,7 @@
    if(isset($_POST['submit'])){
        $password=get_safe_value($con,$_POST['password']);
        $full_name=get_safe_value($con,$_POST['full_name']);
+       $comp_email=get_safe_value($con,$_POST['comp_email']);
        $phone=get_safe_value($con,$_POST['phone']);
        $message=get_safe_value($con,$_POST['message']);
        $address=get_safe_value($con,$_POST['address']);
@@ -80,15 +83,15 @@
            if(isset($_GET['id']) && $_GET['id']!=''){
            if($_FILES['image']['name']!=''){
                    $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-                    if (!move_uploaded_file($_FILES['image']['tmp_name'], PROFILE_IMAGE_SERVER_PATH . $image)) {
-                       throw new Exception("Failed to move the uploaded file.");
-                   }else{
-                       move_uploaded_file($_FILES['image']['tmp_name'],PROFILE_IMAGE_SERVER_PATH.$image);
-                   }
-                   mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',image='$image' where id='$id'");
+                //     if (!move_uploaded_file($_FILES['image']['tmp_name'], PROFILE_IMAGE_SERVER_PATH . $image)) {
+                //        throw new Exception("Failed to move the uploaded file.");
+                //    }else{
+                //        move_uploaded_file($_FILES['image']['tmp_name'],PROFILE_IMAGE_SERVER_PATH.$image);
+                //    }
+                   mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email',image='$image' where id='$id'");
                }
                else{
-                    mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link' where id='$id'");
+                    mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email' where id='$id'");
                }
    
                
@@ -166,8 +169,14 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="inputEmail4">Full name</label>
+                                        <label for="inputEmail4">Company name</label>
                                         <input type="text" name="full_name" value="<?php echo $full_name ?>" class="form-control" id="inputEmail4" >
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Company Email</label>
+                                        <input type="text" name="comp_email" value="<?php echo $comp_email ?>" class="form-control" id="inputEmail4" >
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -192,7 +201,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Google Link</label>
+                                        <label for="inputEmail4">Linkedin Link</label>
                                         <input type="text" name="google_link" value="<?php echo $google_link ?>" class="form-control" id="inputEmail4" >
                                     </div>
                                     <div class="form-group col-md-6">
@@ -208,7 +217,7 @@
                                    
                                 </div>
                                 <div class="form-group">
-                                        <label for="inputEmail4">Something About you</label>
+                                        <label for="inputEmail4">About Company</label>
                                         <textarea name="message" class="form-control" cols="30" rows="5"><?php echo $message ?></textarea>
                                 </div>
                                 <div class="form-group">

@@ -1,10 +1,9 @@
 <?php
     $rowNumber = 1;
    include 'layout/head.php';
-   $title = 'Job Application';
-   $manage_page = 'manage_jobs.php';
-   $table = 'job_applications';
-   $join_table ='job';
+   $title = 'Enquiry List';
+   $table = 'enquiry';
+//    $join_table ='job';
 
    if(isset($_GET['type']) && $_GET['type']!=''){
 	$type=get_safe_value($con,$_GET['type']);
@@ -17,32 +16,20 @@
 			$status='0';
 		}
 		$update_status_sql="update $table set status='$status' where id='$id'";
-		mysqli_query($con,$update_status_sql);
-
-        $sql="SELECT $table.*,$join_table.title,$join_table.menu_id FROM $table,$join_table WHERE $table.job_id=$join_table.id";
-        $res=mysqli_query($con,$sql);
+		mysqli_query($con,$update_status_sql);   
 	}
-	
-	if($type=='delete'){
+    if($type=='delete'){
 		$id=get_safe_value($con,$_GET['id']);
 		$delete_sql="delete from $table where id='$id'";
 		$res=mysqli_query($con,$delete_sql);
-        $sql="SELECT $table.*,$join_table.title,$join_table.menu_id FROM $table,$join_table WHERE $table.job_id=$join_table.id";
-        $res=mysqli_query($con,$sql);
 	}
-    if($type=='search'){
-		$id=get_safe_value($con,$_GET['id']);
-		$sql="SELECT $table.*,$join_table.title,$join_table.menu_id FROM $table,$join_table WHERE $table.job_id=$join_table.id";
-        $res=mysqli_query($con,$sql);
-	}
-}else{
-  
-    $sql="SELECT $table.*,$join_table.title,$join_table.menu_id FROM $table,$join_table WHERE $table.job_id=$join_table.id";
-    $res=mysqli_query($con,$sql);
-   
-    
 }
-
+	
+	
+  
+  
+    $sql="SELECT * FROM $table order by id desc";
+    $res=mysqli_query($con,$sql);
 
 ?>
 
@@ -52,9 +39,9 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <h1><?php echo $title; ?></h1>
-                        <div class="text-zero top-right-button-container">
+                        <!-- <div class="text-zero top-right-button-container">
                             <a href="<?php echo $manage_page; ?>"><button type="button" class="btn btn-primary btn-lg top-right-button mr-1">ADD NEW</button></a>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="separator mb-5"></div>
@@ -70,13 +57,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Job Title</th>
-                                        <th scope="col">Country</th>
-                                        <th scope="col">name</th>
-                                        <th scope="col">mobile</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">email</th>
-                                        <th scope="col">Resume</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Message</th>
                                         <th scope="col">Status</th>
 
                                     </tr>
@@ -89,17 +73,10 @@
                                             ?>
                                      <tr>
                                             <th scope="row"><?php echo $rowNumber; ?></th>                                            
-                                            <td><?php echo $row['title'] ?></td> 
-                                            <?php 
-                                               $menu_id = $row['menu_id']; 
-                                               $menu_name = mysqli_fetch_assoc(mysqli_query($con,"SELECT name as country FROM `menu_items` where id='$menu_id'"));
-                                            ?>
-                                            <td><?php echo $menu_name['country'] ?></td>
-                                            <td><?php echo $row['name'] ?></td>
-                                            <td><?php echo $row['mobile'] ?></td>
-                                            <td><?php echo $row['location'] ?></td>
-                                            <td><?php echo $row['email'] ?></td>
-                                            <td><a href="<?php echo APPLICATION_IMAGE_SITE_PATH.$row['image']?>" target="_blank"><?php echo $row['image'] ?></a></td>                                          
+                                            <td><?php echo $row['full_name'] ?></td>
+                                            <td><?php echo $row['phone_number'] ?></td>
+                                            <td><?php echo $row['email_id'] ?></td>
+                                            <td><?php echo $row['message'] ?></td>                                         
                                             <td>
                                             <?php
                                                if($row['status']==1){

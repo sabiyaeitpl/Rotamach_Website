@@ -73,11 +73,11 @@
                     // }else{
                     //     move_uploaded_file($_FILES['image']['tmp_name'],CMS_IMAGE_SERVER_PATH.$image);
                     // }
-                    mysqli_query($con,"update $table set title='$title',menu_id='$menu_id',description='$description',video='$video',image='$image', status=$status where id='$id'");
+                    mysqli_query($con,"update $table set title='$title',menu_id='$menu_id',description='$description',video='$video',image='$image' where id='$id'");
                 }
                 else{
                    
-                    mysqli_query($con,"update $table set title='$title',menu_id='$menu_id',description='$description',video='$video', status=$status where id='$id'");
+                    mysqli_query($con,"update $table set title='$title',menu_id='$menu_id',description='$description',video='$video' where id='$id'");
                 }
     
                  
@@ -153,26 +153,8 @@
                                         <input type="text" class="form-control" id="" name="title" value="<?php echo $title?>" required>
                                     </div>
                                 </div>
-                               
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Menu</label>
-                                    <div class="col-sm-10">
-                                    <select class="form-control" name="menu_id" required>
-										<option>Select Menu</option>
-										<?php
-										$res=mysqli_query($con,"select id,name from menu_items where status=1 order by name asc");
-										while($row=mysqli_fetch_assoc($res)){
-											if($row['id']==$menu_id){
-												echo "<option selected value=".$row['id'].">".$row['name']."</option>";
-											}else{
-												echo "<option value=".$row['id'].">".$row['name']."</option>";
-											}
-											
-										}
-										?>
-									</select>
-                                    </div>
-                                </div>
+                                <input type="hidden" name="menu_id" value="<?php echo $menu_id; ?>">
+                                <input type="hidden" name="video" value="<?php echo $video; ?>">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
@@ -180,61 +162,6 @@
                                     </div>
                                 </div>
                                
-                                <div class="form-group row ">
-                                    <label class="col-sm-2 col-form-label">Video</label>
-                                    <div class="col-sm-10">
-                                    <textarea class="form-control" rows="5"  name="video" ><?php echo $video ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Image</label>
-                                    <div class="col-sm-10">
-                                        	<?php
-
-                              if ($image!='') {
-                              	echo "<a target='_blank' href='".CMS_IMAGE_SITE_PATH.$image."'><img width='100px' height='100px' src='".CMS_IMAGE_SITE_PATH.$image."'/></a>";
-                              }
-									 ?>
-                                        <input type="file" class="form-control" id="" name="image" accept="image/*" >
-                                    </div>
-                                </div>
-                                <?php if ($role_id==1) { ?>
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                        <label class="col-form-label col-sm-2 pt-0">Status</label>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="status"
-                                                    id="gridRadios1" value="1" <?php echo ($status!="")?(($status==1)?'checked':''):'' ?> >
-                                                <label class="form-check-label" for="gridRadios1">
-                                                   Approved
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="status"
-                                                    id="gridRadios2" value="2" <?php echo ($status!="")?(($status==2)?'checked':''):'' ?>>
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Pending
-                                                </label>
-                                            </div>
-                                            <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="status"
-                                                    id="gridRadios3" value="0" <?php echo ($status!="")?(($status==0)?'checked':''):'' ?> >
-                                                <label class="form-check-label" for="gridRadios3">
-                                                    Rejected
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <?php
-                                    }
-                                    else{
-                                        ?>
-                                        <input type="hidden" name="status" value=<?php echo isset($_GET['id'])?$status:'2' ?> readonly>
-                                        <?php
-                                    }
-                                ?>
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-10">
                                         <button type="submit" name="submit" class="btn btn-primary mb-0">Submit</button>

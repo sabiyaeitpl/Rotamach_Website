@@ -2,6 +2,8 @@
   $title ='Rotamech';
   $metatitle = 'Rotamech';
   $metadescription = "Rotamech Website";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

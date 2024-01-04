@@ -1,3 +1,9 @@
+<?php 
+     $query =  mysqli_query($con,"SELECT * FROM `bulletian`");
+     $row = mysqli_fetch_assoc($query);
+     $content = $row['description'];
+  ?>
+ 
  <!-- Navbar Start -->
  <header class="nav-down">
         <div class="bg-white logo_main">
@@ -46,19 +52,7 @@
                 <div class="row">
                     <p class="m-0 d-flex"><b class="text-uppercase text-danger font-bold fw-bold mr-2">Bulletin:</b>
                         <marquee direction="left" onMouseOver="this.stop()" onMouseOut="this.start()"><span>
-                                Successfully
-                                Commissioned a Double Strand Pig Casting Machine for
-                                M/s.
-                                SAIL, at Bokaro
-                                Steel Plant, BOKARO on 10th Feb,
-                                2021.</span> <span class="text-danger ml-2 mr-2 fw-bold"
-                                style="margin-top: -8px; display: inline-block; vertical-align: middle;">|</span>
-                            <span>Successfully Commissioned a Double
-                                Strand Pig Casting Machine
-                                for M/s.
-                                SAIL, at Bokaro
-                                Steel Plant, BOKARO on 10th Feb,
-                                2021.</span>
+                             <?php echo $content ?>
                         </marquee>
                     </p>
                 </div>

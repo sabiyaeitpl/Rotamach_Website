@@ -1,10 +1,9 @@
 <?php
+    $rowNumber = 1;
    include 'layout/head.php';
-   $rowNumber = 1;
-   $title = 'CMS';
-   $manage_page = 'manage_cms.php';
-   $table = 'cms';
-   $join_table = 'menu_items';
+   $title = 'Career Application';
+   $table = 'career';
+//    $join_table ='job';
 
    if(isset($_GET['type']) && $_GET['type']!=''){
 	$type=get_safe_value($con,$_GET['type']);
@@ -17,27 +16,20 @@
 			$status='0';
 		}
 		$update_status_sql="update $table set status='$status' where id='$id'";
-		mysqli_query($con,$update_status_sql);
+		mysqli_query($con,$update_status_sql);   
 	}
-	
-	if($type=='delete'){
+    if($type=='delete'){
 		$id=get_safe_value($con,$_GET['id']);
 		$delete_sql="delete from $table where id='$id'";
-		mysqli_query($con,$delete_sql);
-        $sql="SELECT $join_table.name,$table.* FROM $table,$join_table where $table.menu_id = $join_table.id and $join_table.status=1 order by $table.id desc";
-        $res=mysqli_query($con,$sql);
+		$res=mysqli_query($con,$delete_sql);
 	}
-    if($type=='search'){
-		$id=get_safe_value($con,$_GET['id']);
-		$sql="SELECT $join_table.name,$table.* FROM $table,$join_table where $table.menu_id = $join_table.id and $table.menu_id=$id order by $table.id desc";
-        $res=mysqli_query($con,$sql);
-	}
-}else{
-        $sql="SELECT $join_table.name,$table.* FROM $table,$join_table where $table.menu_id = $join_table.id and $join_table.status=1 order by $table.id desc";
-        $res=mysqli_query($con,$sql);
-    
 }
-
+	
+	
+  
+  
+    $sql="SELECT * FROM $table order by id desc";
+    $res=mysqli_query($con,$sql);
 
 ?>
 
@@ -61,12 +53,18 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $title; ?> List</h5>
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="table_row">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Job Type</th>
+                                        <th scope="col">Message</th>
+                                        <th scope="col">Resume</th>
+                                        <th scope="col">Status</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,24 +74,26 @@
                                         while($row = mysqli_fetch_assoc($res)){
                                             ?>
                                      <tr>
-                                            <th scope="row"><?php echo $rowNumber; ?></th>  
-                                            <td><?php echo $row['title'] ?></td>
-                                          
+                                            <th scope="row"><?php echo $rowNumber; ?></th>                                            
+                                            <td><?php echo $row['full_name'] ?></td>
+                                            <td><?php echo $row['phone_number'] ?></td>
+                                            <td><?php echo $row['email_id'] ?></td>
+                                            <td><?php echo $row['job_type'] ?></td>
+                                            <td><?php echo $row['message'] ?></td>
+                                            <td><a href="<?php echo CAREER_IMAGE_SITE_PATH.$row['image']?>" target="_blank"><?php echo $row['image'] ?></a></td>                                          
                                             <td>
-                                                <?php
-                                                    // if($row['status']==1){
-                                                    //     echo "<span class='badge badge-pill badge-success'><a href='?type=status&operation=deactive&id=".$row['id']."' class='badge-text-color'>Active</a></span>&nbsp;";
-                                                    // }else{
-                                                    //     echo "<span class='badge badge-pill badge-warning'><a href='?type=status&operation=active&id=".$row['id']."' class='badge-text-color'>Deactive</a></span>&nbsp;";
-                                                    // }
-                                                    echo "<span class='badge badge-pill badge-info'><a href='$manage_page?id=".$row['id']."' class='badge-text-color'>Edit</a></span>&nbsp;";
-                                                    
-                                                    
+                                            <?php
+                                               if($row['status']==1){
+                                                echo "<span class='badge badge-pill badge-success'><a href='?type=status&operation=deactive&id=".$row['id']."' class='badge-text-color'>Checked</a></span>&nbsp;";
+                                            }else{
+                                                echo "<span class='badge badge-pill badge-danger'><a href='?type=status&operation=active&id=".$row['id']."' class='badge-text-color'>Uncheked</a></span>&nbsp;";
+                                            }
+                                                
                                                 ?>
                                             </td>
                                      </tr>
                                     <?php  
-                                        $rowNumber++; 
+                                    $rowNumber++; 
                                         }
                                 }else{
                                     echo '<tr>';
@@ -112,3 +112,13 @@
 <?php
    include 'layout/footer.php';
 ?>
+<script>
+         $(document).ready(function(){
+			   $(".export-btn").click(function(){  
+			     $("#table_row").tableHTMLExport({
+		         type:'csv',
+			     filename:'career.csv',
+				});
+		});
+		});
+</script>

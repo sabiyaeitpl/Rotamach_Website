@@ -1,3 +1,4 @@
+    <script src="layout/test.js"></script>
     <script src="js/vendor/jquery-3.3.1.min.js"></script>
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="js/vendor/Chart.bundle.min.js"></script>
