@@ -9,6 +9,9 @@ define('SITE_PATH','http://localhost/rotamach/');
 define('PROJECT_IMAGE_SERVER_PATH',SERVER_PATH.'media/project/');
 define('PROJECT_IMAGE_SITE_PATH',SITE_PATH.'media/project/');
 
+define('COUNT_IMAGE_SERVER_PATH',SERVER_PATH.'media/count/');
+define('COUNT_IMAGE_SITE_PATH',SITE_PATH.'media/count/');
+
 define('TEAM_IMAGE_SERVER_PATH',SERVER_PATH.'media/ourteam/');
 define('TEAM_IMAGE_SITE_PATH',SITE_PATH.'media/ourteam/');
 

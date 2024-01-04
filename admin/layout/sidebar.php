@@ -86,6 +86,12 @@
                         </a>
                         <div id="collapseAuthorization" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
+                            <li>
+                                    <a href="bulletin.php">
+                                        <i class="simple-icon-grid"></i> 
+                                        Bulletin Section
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="banner.php">
                                         <i class="simple-icon-grid"></i> 

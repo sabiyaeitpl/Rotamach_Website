@@ -28,7 +28,7 @@
                 ?>
             
          <script>
-        window.location.href='testimonials_list.php';
+        window.location.href='testimonials.php';
         </script>
         <?php
             die();
@@ -59,11 +59,11 @@
             if(isset($_GET['id']) && $_GET['id']!=''){
             if($_FILES['image']['name']!=''){
                     $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-                     if (!move_uploaded_file($_FILES['image']['tmp_name'], TESTIMONIALS_IMAGE_SERVER_PATH . $image)) {
-                        throw new Exception("Failed to move the uploaded file.");
-                    }else{
-                        move_uploaded_file($_FILES['image']['tmp_name'],TESTIMONIALS_IMAGE_SERVER_PATH.$image);
-                    }
+                    //  if (!move_uploaded_file($_FILES['image']['tmp_name'], TESTIMONIALS_IMAGE_SERVER_PATH . $image)) {
+                    //     throw new Exception("Failed to move the uploaded file.");
+                    // }else{
+                    //     move_uploaded_file($_FILES['image']['tmp_name'],TESTIMONIALS_IMAGE_SERVER_PATH.$image);
+                    // }
                     mysqli_query($con,"update $table set name='$name',description='$description',image='$image' where id='$id'");
                 }
                 else{
@@ -73,11 +73,11 @@
                 
             }else{
                 $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-                if (!move_uploaded_file($_FILES['image']['tmp_name'], TESTIMONIALS_IMAGE_SERVER_PATH . $image)) {
-                    throw new Exception("Failed to move the uploaded file.");
-                }else{
-                    move_uploaded_file($_FILES['image']['tmp_name'],TESTIMONIALS_IMAGE_SERVER_PATH.$image);
-                }
+                // if (!move_uploaded_file($_FILES['image']['tmp_name'], TESTIMONIALS_IMAGE_SERVER_PATH . $image)) {
+                //     throw new Exception("Failed to move the uploaded file.");
+                // }else{
+                //     move_uploaded_file($_FILES['image']['tmp_name'],TESTIMONIALS_IMAGE_SERVER_PATH.$image);
+                // }
                 
                 mysqli_query($con,"insert into $table(name,description,image,status) values('$name','$description','$image','1')");
             }
@@ -86,7 +86,7 @@
             ?>
             
          <script>
-        window.location.href='testimonials_list.php';
+        window.location.href='testimonials.php';
         </script>
         <?php
             die();

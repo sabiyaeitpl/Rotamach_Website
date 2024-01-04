@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target Blank in CSS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   .external-link {
+  position: relative;
+}
+
+.external-link:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.external-link:hover:after {
+  content: attr(href);
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.2); /* semi-transparent white background on hover */
+  pointer-events: none; /* Prevent the pseudo-element from blocking clicks on the link */
+}
+
+
+  </style>
+</head>
+<body>
+  <a href="https://example.com" class="external-link">Visit Example.com</a>
+</body>
+</html>
