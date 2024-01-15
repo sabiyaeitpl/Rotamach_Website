@@ -3,7 +3,6 @@
    $title = 'Products';
    $manage_page = 'manage_products.php';
    $table = 'products';
-   $join_table = 'product_categories';
 
    if(isset($_GET['type']) && $_GET['type']!=''){
 	$type=get_safe_value($con,$_GET['type']);
@@ -17,27 +16,20 @@
 		}
 		$update_status_sql="update $table set status='$status' where id='$id'";
 		mysqli_query($con,$update_status_sql);
-        $sql="SELECT $join_table.name as cname,$table.* FROM $table,$join_table WHERE $table.categories_id=$join_table.id;";
-        $res=mysqli_query($con,$sql);
 	}
 	
 	if($type=='delete'){
 		$id=get_safe_value($con,$_GET['id']);
 		$delete_sql="delete from $table where id='$id'";
 		mysqli_query($con,$delete_sql);
-        $sql="SELECT $join_table.name as cname,$table.* FROM $table,$join_table WHERE $table.categories_id=$join_table.id;";
-        $res=mysqli_query($con,$sql);
 	}
-    if($type=='search'){
-		$id=get_safe_value($con,$_GET['id']);
-		$sql="SELECT * FROM $table where id=$id order by id desc";
-        $res=mysqli_query($con,$sql);
-	}
-    }else{
+ 
+
         
-        $sql="SELECT $join_table.name as cname,$table.* FROM $table,$join_table WHERE $table.categories_id=$join_table.id;";
-        $res=mysqli_query($con,$sql);
-    }
+       
+}
+$sql="SELECT $table.* FROM $table order by id desc";
+$res=mysqli_query($con,$sql);
 
 ?>
 
@@ -75,7 +67,6 @@
                                     <tr>
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Category</th>
                                         <th scope="col">Created_at</th>
                                         <th scope="col">status</th>
                                         <th scope="col">Action</th>
@@ -94,7 +85,6 @@
                             </td>
                                             
                                             <td><?php echo $row['name'] ?></td>
-                                            <td><?php echo $row['cname'] ?></td>
                                            
                                             <td><?php echo $row['created_at'] ?></td>
                                             <td><?php if($row['status']==1){

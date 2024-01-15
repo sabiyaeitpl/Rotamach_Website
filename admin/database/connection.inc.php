@@ -19,6 +19,15 @@ define('SITE_PATH','http://localhost/rotamach/');
 define('CMS_IMAGE_SERVER_PATH',SERVER_PATH.'media/cms/');
 define('CMS_IMAGE_SITE_PATH',SITE_PATH.'media/cms/');
 
+define('CLIENT_IMAGE_SERVER_PATH',SERVER_PATH.'media/client/');
+define('CLIENT_IMAGE_SITE_PATH',SITE_PATH.'media/client/');
+
+define('DESIGN_IMAGE_SERVER_PATH',SERVER_PATH.'media/design/');
+define('DESIGN_IMAGE_SITE_PATH',SITE_PATH.'media/design/');
+
+define('DRAWING_IMAGE_SERVER_PATH',SERVER_PATH.'media/drawing/');
+define('DRAWING_IMAGE_SITE_PATH',SITE_PATH.'media/drawing/');
+
 define('COUNT_IMAGE_SERVER_PATH',SERVER_PATH.'media/count/');
 define('COUNT_IMAGE_SITE_PATH',SITE_PATH.'media/count/');
 
@@ -34,12 +43,6 @@ define('VIDEO_IMAGE_SITE_PATH',SITE_PATH.'media/video/');
 define('APPLICATION_IMAGE_SERVER_PATH',SERVER_PATH.'media/application/');
 define('APPLICATION_IMAGE_SITE_PATH',SITE_PATH.'media/application/');
 
-define('WEBINAR_IMAGE_SERVER_PATH',SERVER_PATH.'media/webinar/');
-define('WEBINAR_IMAGE_SITE_PATH',SITE_PATH.'media/webinar/');
-
-define('INNOVATION_IMAGE_SERVER_PATH',SERVER_PATH.'media/innovation/');
-define('INNOVATION_IMAGE_SITE_PATH',SITE_PATH.'media/innovation/');
-
 define('BANNER_IMAGE_SERVER_PATH',SERVER_PATH.'media/banner/');
 define('BANNER_IMAGE_SITE_PATH',SITE_PATH.'media/banner/');
 
@@ -52,29 +55,14 @@ define('CONTENT_IMAGE_SITE_PATH',SITE_PATH.'media/contents/');
 define('WHY_IMAGE_SERVER_PATH',SERVER_PATH.'media/whyChooseUs/');
 define('WHY_IMAGE_SITE_PATH',SITE_PATH.'media/whyChooseUs/');
 
-define('BLOG_CATEGORY_IMAGE_SERVER_PATH',SERVER_PATH.'media/blogCategory/');
-define('BLOG_CATEGORY_IMAGE_SITE_PATH',SITE_PATH.'media/blogCategory/');
 
-define('BLOG_IMAGE_SERVER_PATH',SERVER_PATH.'media/blog/');
-define('BLOG_IMAGE_SITE_PATH',SITE_PATH.'media/blog/');
+
 
 define('PROFILE_IMAGE_SERVER_PATH',SERVER_PATH.'media/profile/');
 define('PROFILE_IMAGE_SITE_PATH',SITE_PATH.'media/profile/');
 
-define('ARTICLE_CATEGORY_IMAGE_SERVER_PATH',SERVER_PATH.'media/articleCategory/');
-define('ARTICLE_CATEGORY_IMAGE_SITE_PATH',SITE_PATH.'media/articleCategory/');
 
-define('ARTICLE_IMAGE_SERVER_PATH',SERVER_PATH.'media/article/');
-define('ARTICLE_IMAGE_SITE_PATH',SITE_PATH.'media/article/');
 
-define('BOOK_CATEGORY_IMAGE_SERVER_PATH',SERVER_PATH.'media/bookCategory/');
-define('BOOK_CATEGORY_IMAGE_SITE_PATH',SITE_PATH.'media/bookCategory/');
-
-define('BOOK_IMAGE_SERVER_PATH',SERVER_PATH.'media/book/');
-define('BOOK_IMAGE_SITE_PATH',SITE_PATH.'media/book/');
-
-define('MAGAZINE_IMAGE_SERVER_PATH',SERVER_PATH.'media/magazine/');
-define('MAGAZINE_IMAGE_SITE_PATH',SITE_PATH.'media/magazine/');
 
 define('CHILD_SERVICE_IMAGE_SERVER_PATH',SERVER_PATH.'media/child_service/');
 define('CHILD_SERVICE_IMAGE_SITE_PATH',SITE_PATH.'media/child_service/');

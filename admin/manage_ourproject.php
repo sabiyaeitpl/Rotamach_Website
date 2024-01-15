@@ -7,7 +7,6 @@
    $breadcumb_title = 'Add '.$section_title;
    
     $heading='';
-    $content='';
     $image='';
     $msg='';
 
@@ -35,7 +34,6 @@
     }
     if(isset($_POST['submit'])){
         $heading=get_safe_value($con,$_POST['heading']);
-        $content=get_safe_value($con,$_POST['content']);
         $image=get_safe_value($con,$_POST['image']);
         if(isset($_GET['id']) && $_GET['id']==0){
             if($_FILES['image']['type']!='image/png' && $_FILES['image']['type']!='image/jpg' && $_FILES['image']['type']!='image/jpeg' && $_FILES['image']['type']!='image/gif'){

@@ -18,6 +18,9 @@
    $twitter_link='';
    $instagram_link='';
    $youtube_link='';
+   $meta_title='';
+   $meta_keywords='';
+   $meta_descriptions='';
    $image='';
    $msg = '';
    try {
@@ -40,6 +43,9 @@
            $twitter_link=$row['twitter_link'];
            $instagram_link=$row['instagram_link'];
            $youtube_link=$row['youtube_link'];
+           $meta_title=$row['meta_title'];
+           $meta_keywords=$row['meta_keywords'];
+           $meta_descriptions=$row['meta_description'];
            $image=$row['image'];
        }else{
            //header('location:banner.php');
@@ -65,6 +71,9 @@
        $twitter_link=get_safe_value($con,$_POST['twitter_link']);
        $instagram_link=get_safe_value($con,$_POST['instagram_link']);
        $youtube_link=get_safe_value($con,$_POST['youtube_link']);
+       $meta_title=get_safe_value($con,$_POST['meta_title']);
+       $meta_keywords=get_safe_value($con,$_POST['meta_keywords']);
+       $meta_descriptions=get_safe_value($con,$_POST['meta_descriptions']);
 
        if(isset($_GET['id']) && $_GET['id']==0){
            if($_FILES['image']['type']!='image/png' && $_FILES['image']['type']!='image/jpg' && $_FILES['image']['type']!='image/jpeg' && $_FILES['image']['type']!='image/gif'){
@@ -88,10 +97,10 @@
                 //    }else{
                 //        move_uploaded_file($_FILES['image']['tmp_name'],PROFILE_IMAGE_SERVER_PATH.$image);
                 //    }
-                   mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email',image='$image' where id='$id'");
+                   mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email',image='$image',meta_title='$meta_title',meta_keywords='$meta_keywords',meta_description='$meta_descriptions' where id='$id'");
                }
                else{
-                    mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email' where id='$id'");
+                    mysqli_query($con,"update $table set password='$password',full_name='$full_name',phone='$phone',message='$message',address='$address',facebook_link='$facebook_link',google_link='$google_link',twitter_link='$twitter_link',instagram_link='$instagram_link',youtube_link='$youtube_link',comp_email='$comp_email',meta_title='$meta_title',meta_keywords='$meta_keywords',meta_description='$meta_descriptions' where id='$id'");
                }
    
                
@@ -219,6 +228,18 @@
                                 <div class="form-group">
                                         <label for="inputEmail4">About Company</label>
                                         <textarea name="message" class="form-control" cols="30" rows="5"><?php echo $message ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                        <label for="inputEmail4">Title</label>
+                                        <textarea name="meta_title" class="form-control" cols="30" rows="5"><?php echo $meta_title ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                        <label for="inputEmail4">Meta Keywords</label>
+                                        <textarea name="meta_keywords" class="form-control" cols="30" rows="5"><?php echo $meta_keywords ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                        <label for="inputEmail4">Meta Description</label>
+                                        <textarea name="meta_descriptions" class="form-control" cols="30" rows="5"><?php echo $meta_descriptions ?></textarea>
                                 </div>
                                 <div class="form-group">
                                         <label for="inputEmail4">Profile Image</label>

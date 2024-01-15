@@ -20,55 +20,31 @@
                         </a>
                     </li>
                     <li>
+                        <a href="products.php">
+                        <i class="iconsminds-jacket"></i>Product
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#design">
+                        <i class="simple-icon-grid"></i>Design
+                        </a>
+                    </li>
+                    <li>
+                        <a href="client.php">
+                        <i class="simple-icon-grid"></i> Client
+                        </a>
+                    </li>
+                    <li>
                         <a href="cms.php">
                         <i class="simple-icon-grid"></i> CMS
                         </a>
                     </li>
-                    <li>
-                        <a href="#jobs">
-                        <i class="simple-icon-grid"></i> Job
-                        </a>
-                    </li>
-                    
-                    
-                    
-                    <?php if ($role_id==1 || $role_id==3) { ?>
-                    <li>
-                        <a href="user_list.php">
-                            <i class="iconsminds-user"></i> User
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($role_id==1 || $role_id==3) { ?>
-                    <li>
-                        <a href="service_list.php">
-                            <i class="iconsminds-box"></i> Services
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($role_id==1 || $role_id==3) { ?>
-                    <li>
-                        <a href="#product">
-                            <i class="iconsminds-jacket"></i> Products
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($role_id==1 || $role_id==3) { ?>
-                    <li>
-                        <a href="testimonials_list.php">
-                            <i class="iconsminds-profile"></i> Testimonials
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($role_id==1) { ?>
+                   
                     <li>
                         <a href="general_setting.php?id=<?php echo $user_id; ?>">
                             <i class="iconsminds-gear"></i> General Settings
                         </a>
                     </li>
-                    <?php
-                    } 
-                    ?>
                 </ul>
             </div>
         </div>
@@ -149,6 +125,18 @@
                     <li>
                         <a href="joinus.php">
                             <i class="simple-icon-basket-loaded"></i> <span class="d-inline-block">Join Us List</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled" data-link="design">
+                    <li>
+                        <a href="design.php">
+                            <i class="simple-icon-picture"></i> <span class="d-inline-block">Design</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="drawing.php">
+                            <i class="simple-icon-check"></i> <span class="d-inline-block">Drawing</span>
                         </a>
                     </li>
                 </ul>

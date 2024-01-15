@@ -1,5 +1,6 @@
 <?php 
    include('layout/app.php');
+   $product_nav = mysqli_query($con,"SELECT * FROM `products` where status=1");
 ?>
 
 
@@ -32,120 +33,31 @@
                 </div>
             </div>
             <div class="row">
+            <?php
+               while ($row_product = mysqli_fetch_assoc($product_nav)) { 
+                $encodedId = base64_encode($row_product['id']);
+            ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
                     <div class="position-relative overflow-hidden m-2">
                         <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row_product['image'] ?>" alt="<?php echo $row_product['name'] ?>">
                         </div>
                         <div
                             class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
+                            <h4 class="text-white mb-4"><?php echo $row_product['name'] ?></h4>
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
+                                <a class="btn btn-outline-primary m-1" href="product_details.php?id=<?php echo $encodedId; ?>">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.jpg" data-lightbox="portfolio">
+                                <a class="btn btn-outline-primary m-1" href="<?php echo PRODUCT_IMAGE_SITE_PATH.$row_product['image'] ?>" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden m-2">
-                        <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.png" alt="">
-                        </div>
-                        <div
-                            class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.png" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden m-2">
-                        <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                        </div>
-                        <div
-                            class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.jpg" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden m-2">
-                        <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.png" alt="">
-                        </div>
-                        <div
-                            class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.png" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden m-2">
-                        <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                        </div>
-                        <div
-                            class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.jpg" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden m-2">
-                        <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="img/blog-1.png" alt="">
-                        </div>
-                        <div
-                            class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
-                            <h4 class="text-white mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-outline-primary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-outline-primary m-1" href="img/blog-1.png" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <?php } ?>
 
             </div>
         </div>

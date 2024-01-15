@@ -24,7 +24,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid bg-light mt-5">
+    <!-- <div class="container-fluid bg-light mt-5">
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <p class="d-block p-0 m-0 text-danger"><b>Setting A Global Standard In Industrial Contracting.</b>
@@ -107,7 +107,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <?php  include('component/home/about.php'); ?>
     <!-- About End -->
 
 

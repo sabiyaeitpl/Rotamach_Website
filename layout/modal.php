@@ -44,12 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enquiry'])) {
     if (mysqli_query($con, $insertQuery)) {
         echo '<script>';
         echo 'alert("Enquiry successfully submitted");';
-        echo 'window.location.href = "index.php";';
+        echo 'window.history.back();';
         echo '</script>';
     } else {
         echo '<script>';
         echo 'alert("Something went wrong!");';
-        echo 'window.location.href = "index.php";';
+        echo 'window.history.back();';
         echo '</script>';
     }
 
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enquiry'])) {
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea name="message" class="form-control" placeholder="Leave a Message here" required></textarea>
+                            <textarea name="message" class="form-control" placeholder="Leave a Message here"></textarea>
                         </div>
 
                         <div class="mb-3">

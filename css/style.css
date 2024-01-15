@@ -348,7 +348,7 @@ legend {
 }
 
 .carousel_text {
-  width: 400px;
+  width: auto;
   background-color: rgba(0, 0, 0, 0.2);
   border: 2px solid #fff;
 }
@@ -930,6 +930,12 @@ header {
   /* padding: 5px; */
   /* margin: 2px 0; */
   cursor: auto;
+}
+
+.product_details_section img {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 
 @media (min-width: 576px) {

@@ -31,8 +31,14 @@
                             <div class="nav-item dropdown">
                                 <a href="products.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Products</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="products.php" class="dropdown-item">Products 1</a>
-                                    <a href="#" class="dropdown-item">Products 2</a>
+                                    <?php
+                                       $product_nav = mysqli_query($con,"SELECT * FROM `products` where status=1");
+                                       while ($row_product = mysqli_fetch_assoc($product_nav)) { 
+                                         $encodedId = base64_encode($row_product['id']);
+                                        ?>
+                                           <a href="product_details.php?id=<?php echo $encodedId; ?>" class="dropdown-item"><?php echo $row_product['name'] ?></a>
+                                     <?php   }
+                                    ?>
                                 </div>
                             </div>
                             <a href="#" class="nav-item nav-link" data-toggle="modal"
